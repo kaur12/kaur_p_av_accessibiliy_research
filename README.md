@@ -1,9 +1,7 @@
 # Media Player
 
 You can choose various types of media
-<hr>
 
-</p>
 
 ## Author:
 

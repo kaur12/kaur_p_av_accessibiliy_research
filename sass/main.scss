@@ -1,0 +1,145 @@
+@import 'modules/_reset';
+@import '_vars';
+
+html, body {
+    height: 100%;
+}
+
+img, video, embed, object {
+    max-width: 100%;
+}
+
+body {
+    background-color: $pink;
+    font-family: $font;
+    color: white;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+#mainApp {
+    min-height: 100vh;
+    align-content: center;
+}
+
+
+.thumb {
+    width: 15%;
+    img {
+        width: 100%;
+    }
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+.thumb:hover, .thumb:focus {
+    @include scale;
+    color: $blue;
+}
+
+.heading {
+    display: none;
+}
+
+h1, h2 ,h3, p {
+    text-align: center;
+}
+
+.ULrow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.playerCon {
+    border: $orange 2px solid;
+    border-radius: 8px;
+}
+
+.icon {
+    color: $orange;
+    border: $orange 1px solid;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: color .5s ease;
+    transition: border .5s ease;
+}
+
+.media {
+    align-self: center;
+}
+
+.fa-volume-down {
+    border-radius: 30px;
+    padding: 10px 12px;
+}
+
+
+.icon:hover, .icon:focus {
+    color: white;
+    border: white 1px solid;
+}
+
+::cue {
+    font-size: 1.2em;
+}
+
+progress[value]{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    width: 100%;
+    height: 5px;
+    color: $orange;
+}
+
+progress[value]::-webkit-progress-bar {
+    border-radius: 5px;
+    background-color: pink;
+}
+
+progress[value]::-webkit-progress-value {
+    border-radius: 5px;
+    background-color: $orange;
+}
+
+::-moz-progress-bar {
+    background-color: $orange;
+}
+
+
+button {
+    border: $blue 2px solid;
+    border-radius: 8px;
+    background-color: $orange;
+    color: $blue;
+    transition: all .5s ease;
+}
+
+button:hover, button:focus {
+    color: white;
+    border: white 2px solid;
+}
+
+
+.footer {
+    background-color: $blue;
+    color: $pink;
+}
+
+@media screen and (min-width: 768px)
+ {
+    p {
+        font-size: 1.2em
+    }
+ }

@@ -1,0 +1,17 @@
+$pink: #eb4559;
+$orange: #f78259;
+$blue: #aeefec;
+
+$font: 'Arial', sans-serif;
+
+@mixin scale {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+@mixin scale3 {
+    -webkit-transform: scale(1.3);
+    -ms-transform: scale(1.3);
+    transform: scale(1.3);
+}

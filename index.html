@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://kit.fontawesome.com/cfa5b23a00.js" crossorigin="anonymous"></script>
+    <title>Media Player</title>
+</head>
+<body>
+    <div id="mainApp">
+        <h1 class="heading">Media Player</h1>
+        <header class="header container x-2 y-4">
+            <h2 class="heading">Main Header</h2>
+        </header>
+
+        <main class="mainCon">
+            <h2 class="pt-4 px-2 h1 text">Welcome to Media Player</h2>
+            <p class="pt-3 px-3 text">you can choose various types of media.</p>
+
+            <section class="pt-5 k-4">
+                <h2 class="h2 d-block px-auto text">Select your Media</h2>
+                <div class="mediaCon mainCon pt-5">
+                    <ul class="ULrow">
+                        <poster @make-selection="setSrc" v-for="(element, index) in mediaelements"
+                        :src="element.src"
+                        :type="element.type"
+                        :name="element.name"
+                        :isvideo="element.isvideo"
+                        :isaudio="element.isaudio"
+                        :key="index">
+                        </poster>
+                    </ul>
+                </div>
+            </section>
+
+            <section v-if="playerCon" class="playerCon container">
+                <h2 class="heading">Media Player</h2>
+                <div v-if="media.active" class="activeMed pt-4 container">
+                    <div class="Con">
+                        <h3 class="h3 text">{{ mediatype }}</h3>
+                        <h4 class="h4 text">{{ medianame }}</h4>
+                        <video v-if="video" v-on:timeupdate="updateProgress" ref="mediaEl" class="media pt-3 d-block px-auto" role="video">
+                            <source :src="'video/' + mediasrc + '.mp4'" type="video/mp4">
+                            <source :src="'video/' + mediasrc + '.webm'" type="video/webm">
+                        </video>
+                        <audio v-if="audio" ref="mediaEl" class="media d-block pt-5 px-auto" controls role="audio">
+                            <source :src="'audio/' + mediasrc + '.mp3'" type="audio/ogg">
+                        </audio>
+                        <progress v-show="video" ref="progress" id="progress" value="0" aria-label="progress bar" role="progressbar"></progress>
+                    </div>
+                </div>
+
+                <div class="divControl d-flex justify-content-center pt-4 pb-4">
+                    <i v-if="media-paused" @click="playPauseMedia" @keyup.enter="playPauseMedia" tabindex="0" class="icon fas fa-pause mr-2" aria-label="pause" role="button"></i>
+                    <i v-else @click="playPauseMedia" @keyup.enter="playPauseMedia" tabindex="0" class="icon fas fa-play mr-2" aria-label="play" role="button"></i>
+                    <i @click="stopMedia" @keyup.enter="stopMedia" tabindex="0" class="icon fas fa-stop mr-2" aria-label="stop"></i>
+                    <i @click="muteMedia" @keyup.enter="muteMedia" v-if="media.muted" tabindex="0" class="icon fas fa-volume-down mr-2" aria-label="unmute" role="button"></i>
+                    <i @click="muteMedia" @keyup.enter="muteMedia" v-else tabindex="0" class="icon fas fa-volume-mute mr-2" aria-label="mute" role="button"></i>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer container k-4 pt-5">
+            <h2 class="heading">Footer</h2>
+            <p class="text">&copy; Media Player 2020.</p>
+        </footer>
+    </div>
+
+    <script defer src="js/main.js"></script>
+</body>
+</html>
